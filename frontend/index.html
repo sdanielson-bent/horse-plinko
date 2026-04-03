@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plinko Game</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Plinko Game</h1>
+            <p class="subtitle">Drop objects and watch them fall!</p>
+        </header>
+
+        <div class="game-area">
+            <canvas id="gameCanvas"></canvas>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label>Select Object:</label>
+                <div class="object-selector">
+                    <button class="object-btn active" data-object="ball">
+                        <span class="object-icon">⚽</span>
+                        <span>Ball</span>
+                    </button>
+                    <button class="object-btn" data-object="horse">
+                        <span class="object-icon">🐴</span>
+                        <span>Horse</span>
+                    </button>
+                    <button class="object-btn" data-object="beach-ball">
+                        <span class="object-icon">🏖️</span>
+                        <span>Beach Ball</span>
+                    </button>
+                </div>
+            </div>
+
+            <button id="dropBtn" class="drop-button">
+                DROP OBJECT
+            </button>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Active Objects:</span>
+                    <span id="activeCount" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Last Slot:</span>
+                    <span id="lastSlot" class="stat-value">-</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Total Score:</span>
+                    <span id="totalScore" class="stat-value">0</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <h3>How to Play</h3>
+            <ul>
+                <li>Click "DROP OBJECT" to release an object</li>
+                <li>Watch it bounce through the pegs</li>
+                <li>Each slot has a unique sound and value</li>
+                <li><strong>Slot 4 (MULTI-BALL)</strong> spawns 3 additional objects!</li>
+                <li>Switch object types for different visuals</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    <script src="/js/objects.js"></script>
+    <script src="/js/sounds.js"></script>
+    <script src="/js/physics.js"></script>
+    <script src="/js/renderer.js"></script>
+    <script src="/js/game.js"></script>
+</body>
+</html>
