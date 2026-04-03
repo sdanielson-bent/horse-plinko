@@ -12,7 +12,12 @@ frontend_path = Path(__file__).parent.parent / "frontend"
 app.mount("/assets", StaticFiles(directory=frontend_path / "assets"), name="assets")
 app.mount("/css", StaticFiles(directory=frontend_path / "css"), name="css")
 app.mount("/js", StaticFiles(directory=frontend_path / "js"), name="js")
-app.mount("/lib", StaticFiles(directory=frontend_path / "lib"), name="lib")
+
+lib_path = frontend_path / "lib"
+if lib_path.exists() and lib_path.is_dir():
+    app.mount("/lib", StaticFiles(directory=lib_path), name="lib")
+else:
+    print(f"Warning: static folder not found: {lib_path} (skipping /lib mount)")
 
 @app.get("/")
 def read_root():
